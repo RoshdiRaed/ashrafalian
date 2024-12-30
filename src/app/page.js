@@ -19,33 +19,34 @@ function Page() {
 
     // Define the handleFormSubmit function
     const handleFormSubmit = (event) => {
-      
       event.preventDefault();
-
-  emailjs
-    .sendForm(
-      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID, // Service ID from .env.local
-      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, // Template ID from .env.local
-      event.target, // Form data
-      process.env.NEXT_PUBLIC_EMAILJS_USER_ID // Public Key from .env.local
-    )
-    .then(
-      (result) => {
-        console.log("Email sent successfully:", result.text);
-        alert("Your message has been sent successfully!");
-      },
-      (error) => {
-        console.error("Error sending email:", error.text);
-        alert("Failed to send the message. Please try again.");
-      }
-    );
-
-  // Reset the form after submission
-  event.target.reset();
-};
+      console.log("Form data", event.target);
+   
+      emailjs
+        .sendForm(
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+          event.target,
+          process.env.NEXT_PUBLIC_EMAILJS_USER_ID
+        )
+        .then(
+          (result) => {
+            console.log("Email sent successfully:", result.text);
+            alert("Your message has been sent successfully!");
+          },
+          (error) => {
+            console.error("Error sending email:", error.text);
+            alert("Failed to send the message. Please try again.");
+          }
+        );
+      
+      // Reset the form after submission
+      event.target.reset();
+   };
+   
   return (
     <>
-        <link rel="shortcut icon" href="./img" type="image/x-icon" />
+        <link rel="shortcut icon" href="./image/logo.png" type="image/x-icon" />
         <title>Ashraf Alian - Professional Designer</title>
 
       {/* Header */}

@@ -21,7 +21,7 @@ Follow these steps to set up the project locally:
 
    ```bash
    git clone https://github.com/yourusername/contact-form.git
-   cd contact-form
+   cd rs-next-v2
    ```
 
 2. **Install Dependencies**
@@ -115,5 +115,4 @@ For any inquiries, feel free to reach out:
 
 - **Author:** Ashraf Alian
 - **Email:** [your_email@example.com](mailto:your_email@example.com)
-- **GitHub:** [github.com/yourusername](https://github.com/yourusername)
 - **Website:** [Your Portfolio](https://yourportfolio.com)
