@@ -5,17 +5,11 @@ import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import emailjs from "emailjs-com";
+import Head from 'next/head';
+
+// import Page, { Html, Head, Main, NextScript } from 'next/Page';
 
 function Page() {
-  const [showPopup, setShowPopup] = useState(false);
-  useEffect(() => {
-    // Initialize AOS
-    AOS.init({
-      duration: 1000, // Animation duration in milliseconds
-      once: true, // Whether animation should happen only once
-      easing: 'ease-in-out', // Default easing for animations
-    });
-  }, []);
 
     // Define the handleFormSubmit function
     const handleFormSubmit = (event) => {
@@ -47,6 +41,9 @@ function Page() {
   return (
     <>
         <link rel="shortcut icon" href="./image/logo.png" type="image/x-icon" />
+        <Head>
+          <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        </Head>
         <title>Ashraf Alian - Professional Designer</title>
 
       {/* Header */}
