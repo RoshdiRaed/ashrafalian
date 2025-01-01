@@ -20,16 +20,6 @@ function Page() {
     });
   }, []);
   
-
-  const Portfolio = dynamic(() => import('../components/Portfolio'), {
-    ssr: false,
-  });
-  const Contact = dynamic(() => import('../components/Contact'), {
-    ssr: false,
-  });
-
-  
-
     // Define the handleFormSubmit function
     const handleFormSubmit = async (event) => {
       event.preventDefault();
