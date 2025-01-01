@@ -5,41 +5,44 @@ import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import emailjs from "emailjs-com";
-import Image from 'next/image';
-import dynamic from 'next/dynamic';
 
 function Page() {
   const [showPopup, setShowPopup] = useState(false);
   useEffect(() => {
-    import('aos').then((AOS) => {
-      AOS.init({
-        duration: 1000,
-        once: true,
-        easing: 'ease-in-out',
-      });
+    // Initialize AOS
+    AOS.init({
+      duration: 1000, // Animation duration in milliseconds
+      once: true, // Whether animation should happen only once
+      easing: 'ease-in-out', // Default easing for animations
     });
   }, []);
-  
+
     // Define the handleFormSubmit function
-    const handleFormSubmit = async (event) => {
+    const handleFormSubmit = (event) => {
       event.preventDefault();
-    
-      try {
-        const result = await emailjs.sendForm(
+      console.log("Form data", event.target);
+   
+      emailjs
+        .sendForm(
           process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
           process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
           event.target,
           process.env.NEXT_PUBLIC_EMAILJS_USER_ID
+        )
+        .then(
+          (result) => {
+            console.log("Email sent successfully:", result.text);
+            alert("Your message has been sent successfully!");
+          },
+          (error) => {
+            console.error("Error sending email:", error.text);
+            alert("Failed to send the message. Please try again.");
+          }
         );
-        console.log('Email sent successfully:', result.text);
-        alert('Your message has been sent successfully!');
-        event.target.reset();
-      } catch (error) {
-        console.error('Error sending email:', error.text);
-        alert('Failed to send the message. Please try again.');
-      }
-    };
-    
+      
+      // Reset the form after submission
+      event.target.reset();
+   };
    
   return (
     <>
@@ -149,13 +152,7 @@ function Page() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="group relative overflow-hidden rounded-lg portfolio-item" data-aos="fade-up">
-            <Image
-  src="/image/img5_1.webp"
-  alt="Project 1"
-  width={500}
-  height={300}
-  className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
-/>
+                <img src="/image/img5_1.webp" alt="Project 1" className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"></img>
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <div className="text-center p-4">
                         <h3 className="text-xl font-semibold text-emerald-400">Brand Identity</h3>
